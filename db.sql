@@ -1,0 +1,33 @@
+DROP DATABASE IF EXISTS site33;
+CREATE DATABASE site33;
+USE site33;
+
+CREATE TABLE `board` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    `code` CHAR(100) NOT NULL UNIQUE,
+    `name` CHAR(100) NOT NULL
+);
+
+CREATE TABLE `article` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    title CHAR(100) NOT NULL,
+    `body` CHAR(100) NOT NULL,
+    boardId INT(10) UNSIGNED NOT NULL,
+    INDEX boardId (`boardId`)
+);
+
+CREATE TABLE `articleReply` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    `body` CHAR(100) NOT NULL,
+    articleId INT(10) UNSIGNED NOT NULL,
+    INDEX articleId (`articleId`)
+);
+
+SELECT * FROM article;
+SELECT * FROM board;
+SELECT * FROM articleReply;
+
+TRUNCATE article;
